@@ -22,19 +22,7 @@ session_start();
 echo '<img src="data:image/jpeg;base64,'.base64_encode($data['POST_PICTURE'] ).'" height="200" width="200"/> '
 ?>
 
-<!--
-<?php 
-$result = $conn->query("SELECT 'POST_PICTURE' FROM `post` ORDER BY id DESC"); 
-?>
-
-<?php if(mysqli_num_rows($results) > 0){ ?> 
-        <?php while($row = mysqli_fetch_assoc($results)){ ?> 
-            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['POST_PICTURE']); ?>" /> 
-        <?php } ?> 
- <?php }else{ ?> 
-    <p class="status error">Image(s) not found...</p> 
-<?php } ?>-->
-
+<!--FORM HERE-->
 
 <form action="uploadpost.php" method="post" enctype="multipart/form-data">
 

@@ -47,6 +47,6 @@ $statusMsg = 'Please select an image file to upload.';
 }
 // Display status message 
 echo $statusMsg; 
-#echo "<script>location.href='createpost.php'</script>";
+echo "<script>location.href='createpost.php'</script>";
 
 ?>
