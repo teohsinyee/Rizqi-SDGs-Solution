@@ -7,7 +7,6 @@ $id = $_SESSION['userid'];
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -21,32 +20,28 @@ $id = $_SESSION['userid'];
 
 <div>
     <h2>Here is the user profile details</h2>
+<!--USER IMAGE!-->
 <?php  
    $query = "SELECT * FROM `user` WHERE `USER_ID`='$id'";  
    $results = mysqli_query($conn, $query);
 	if (mysqli_num_rows($results) == 1) { 
         $data=mysqli_fetch_assoc($results);} 
-echo $data['USER_NAME'] . " ".$data['USER_EMAIL']. " ".$data['USER_PHONE_NUMBER'];
+echo $data['USER_NAME'] . " ".$data['USER_EMAIL']. " ".$data['USER_PHONE_NUMBER']. " ".
+'<img src="data:image/jpeg;base64,'.base64_encode($data['USER_PICTURE'] ).'" height="200" width="200"/> ';
 ?>
 </div>
 
-<!--A form enable to user to update the quantity
-0. DELETE FROM `post` WHERE `post`.`POST_ID` = 18"
-1. UPDATE `post` SET `POST_QUANTITY` = '3' WHERE `post`.`POST_ID` = 2
-2. POST_QUANTITY shud be dynamic & take user input
-Extra: Field validation - becuz if user keyin string then it will cause error when insert
-input into SQL statement
--->
 <!--Make a listings table here -->
-
+<!--ITEM IMAGE!-->
 <div>
-    <h2>My Listings</h2>
+    <h2>My Active Listings</h2>
     <table border="2">
   <tr>
     <td>Item ID</td>
     <td>Item name</td>
     <td>Item description</td>
     <td>Item quantity</td>
+    <td>Item picture</td>
     <td>Edit</td>
     <td>Delete</td>
   </tr>
@@ -56,15 +51,20 @@ input into SQL statement
   $results = mysqli_query($conn, $query); 
   while($data = mysqli_fetch_array($results))
 {
+  if($data['POST_QUANTITY']>0){ //Only show quantity >0
 ?>
 <tr>
     <td><?php echo $data['POST_ID']; ?></td>
     <td><?php echo $data['POST_ITEM_NAME']; ?></td>
     <td><?php echo $data['POST_DESCRIPTION']; ?></td>
-    <td><?php echo $data['POST_QUANTITY']; ?></td>    
+    <td><?php echo $data['POST_QUANTITY']; ?></td>
+    <td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($data['POST_PICTURE'] ).'" height="200" width="200"/>';?> </td>    
     <td><a href="edit.php?id=<?php echo $data['POST_ID']; ?>">Edit</a></td>
     <td><a href="delete.php?id=<?php echo $data['POST_ID']; ?>">Delete</a></td>
   </tr>
+  <?php
+}
+?>
   <?php
 }
 ?>
