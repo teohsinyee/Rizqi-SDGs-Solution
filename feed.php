@@ -1,4 +1,5 @@
-<?php
+<?php 
+require "connection.php";
 
 // Set connection variables
 $server_name = "localhost";
