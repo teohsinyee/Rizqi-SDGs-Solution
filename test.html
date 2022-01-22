@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.generalclass {
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  background-color: #000000;
+  margin: 10px;
+  padding: 10px;
+  display: none;
+}
+
+.button{
+	background: red;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 16px;
+    border: none;   
+    
+}
+
+.button:hover{
+	background: black;    
+}
+
+</style>
+</head>
+<body>
+
+<button class="button" onclick="myFunction('button1')">Button 1</button>
+
+<button class="button" onclick="myFunction('button2')">Button 2</button>
+
+
+
+<div id="button1" class="generalclass">
+<p>I can show anything here</p>
+</div>
+
+<div id="button2" class="generalclass">
+<p>I can show anything here too and different from button 1</p>
+</div>
+
+
+<script>
+function myFunction(divid) {
+
+  var x = document.getElementById(divid);  
+  
+  if (x.style.display == "none") 
+  {
+    x.style.display = "block";
+  } 
+  else {
+    x.style.display = "none";
+  }  
+}
+</script>
+
+
+</body>
+</html>
