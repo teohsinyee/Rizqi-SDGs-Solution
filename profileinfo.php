@@ -25,7 +25,7 @@ $id = $_SESSION['userid'];
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li><a href="post.html">Post</a></li>
+							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button">Logout</a></li>
 						</ul>
@@ -90,7 +90,9 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
       </li>
 
 			</ul>
-    </form>  
+    </form> 
+</section> 
+</div>
 
     <?php
     $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$id'"); // select query
