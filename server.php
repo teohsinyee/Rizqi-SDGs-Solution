@@ -11,10 +11,10 @@ $db = "Rizqi";
 $conn = mysqli_connect($servername, $username, $password,$db);
 
 // Check connection
-if (!$conn) {
+/*if (!$conn) {
    die("Connection failed: " . mysqli_connect_error());
 }
-echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");
+echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");*/
 
 //if user submitted login form
 if (isset($_POST['login_user'])) {
@@ -42,8 +42,10 @@ if (isset($_POST['login_user'])) {
           $data=mysqli_fetch_assoc($results); //array
           $_SESSION['username'] = $data['USER_NAME'];
           $_SESSION['success'] = "You are now logged in";
+          $_SESSION['logged_in'] = time();
           //echo  "Welcome ". $_SESSION['username'];
-          header('location: home.php');
+         // header('location: index.html');
+         header('location: protected.php');
         }else { //if pw is wrong
             array_push($errors, "Wrong username/password combination");
         }
