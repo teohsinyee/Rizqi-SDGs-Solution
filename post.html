@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>New Post</title>
+		<link rel="icon" type="image/x-icon" href="https://64.media.tumblr.com/34d27d0e919fd4a61946def0c6659b63/tumblr_inline_mgfxr4hoqm1roozkr.gif">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h4 class="logo">Rizqi <i class="fa fa-handshake-o"></i></h4>
+					<nav id="nav">
+						<ul>
+							<li><a href="home.html">Home</a></li>
+							<li><a href="post.html">Post</a></li>
+							<li><a href="profile.html">My Profile</a></li>
+							<li><a href="sign_in.html" class="button">Sign In</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					<header>
+						<h2>New Post</h2>
+						<p>Create a new post here.</p>
+					</header>
+					<div class="box post">
+						<!-- it will directly go to homepage and the post safe on db-->
+						<form action="index.html">
+							<label for="iname">Item name</label>
+    						<input type="text" id="iname" name="itemname">
+							<br>
+							<label for="idesc">Item description</label>
+    						<textarea id="idesc" name="idescription" rows="4" cols="50"></textarea>
+							<br>
+							<label for="ipic">Item picture</label>
+    						<input type="file" id="ipic" name="ipicture">
+							<br><br>
+							<label for="quan">Quantity</label>
+    						<input type="number" id="quan" name="quantity" placeholder="0">
+							<br><br>
+							<label for="cat">Category</label>
+    						<select id="cat" name="category">
+								<option value="food">Food</option>
+      							<option value="non-food">Non-Food</option>
+							</select>
+							<br><br>
+							<label for="loc">Location</label>
+    						<input type="text" id="loc" name="location">
+							<br><br>
+							<input  onclick="alert('Successfully posted!')" type="submit" value="Submit">
+						</form>
+
+					</div>
+				</section>
+
+
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

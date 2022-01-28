@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Chivo&family=Judson&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+body{
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    min-height: 100vh;
+} 
+.center,.content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.click-me{
+    /* display:block; */
+    width:70px;
+    height:30px;
+    background: #191035;
+    border-radius: 6px;
+    text-align:center; 
+    font-family: 'Chivo', sans-serif;
+    /* font-size:22px; */
+    /* line-height:50px; */
+    cursor:pointer;
+    /* box-shadow: -3px -3px 7px #fffdfdcc,
+                3px 3px 5px rgba(94, 104, 121, 0.342); */
+
+}
+
+#click{
+    display:none;
+}
+
+.click-me:hover{
+    color: white;
+    background-color: #413562;
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.content{
+    visibility:hidden; 
+    position: fixed; 
+    z-index: 1; 
+    left:30;
+    top: 30;
+    width: 700px;
+    height: auto; 
+    background: white;
+    padding: 30px 35px 40px; 
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #19103560;
+}
+
+#times{
+    position:absolute;
+    right:10px;
+    top:15px;
+    font-size:20px;
+    background: #191035;
+    padding-left: 11px;
+    padding-right: 11px;
+    border-radius: 50%;
+    cursor:pointer;
+}
+
+#click:checked~.content{
+    opacity:1;
+    visibility:visible;
+}
+
+.text{
+    font-size: 30px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-family: 'Amaranth', sans-serif;
+}
+label{
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  margin: auto;
+  margin-bottom: 20px;
+}
