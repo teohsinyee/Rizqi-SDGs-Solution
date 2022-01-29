@@ -4,11 +4,6 @@
     margin: 0;
 }
 
-html
-{
-    font-size: 24px;
-}
-
 .fill-viewport
 {
     height: 100vh;
@@ -211,4 +206,11 @@ html
 {
     text-align: center;
     font-size: 0.8rem;
+}
+
+html
+{
+    font-size: 24px;
+    visibility: visible;
+    opacity: 1;
 }

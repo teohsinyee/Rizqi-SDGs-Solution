@@ -8,6 +8,22 @@ if (!$db_handle)
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $column_per_rows = 4;
 $query = "SELECT * FROM post ORDER BY `POST_DATETIME` DESC";
+if (isset($_POST['filter_category']))
+{
+    if($_POST['filter_category'] == "All")
+    {
+        $query = "SELECT * FROM post ORDER BY `POST_DATETIME` DESC";
+    }
+    else if($_POST['filter_category'] == "Food")
+    {
+        $query = "SELECT * FROM `post` WHERE `POST_CATEGORY` = 'Food' ORDER BY `POST_DATETIME` DESC ";
+    }
+    else if($_POST['filter_category'] == "Non-Food")
+    {
+        $query = "SELECT * FROM `post` WHERE `POST_CATEGORY` = 'Non-Food' ORDER BY `POST_DATETIME` DESC ";
+    }
+}
+unset($_POST['filter_category']);
 $result = mysqli_query($db_handle, $query);
 $number_of_rows = mysqli_num_rows($result);
 $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
@@ -17,6 +33,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>html{visibility: hidden;opacity:0;}</style>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="https://64.media.tumblr.com/34d27d0e919fd4a61946def0c6659b63/tumblr_inline_mgfxr4hoqm1roozkr.gif">
@@ -41,9 +58,15 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
             <!-- Page Title End -->
             <!-- Filter Buttons Container Start -->
             <div class="filter-buttons-container">
-                <button class="filter-button">All</button>
-                <button class="filter-button">Food</button>
-                <button class="filter-button">Non-Food</button>
+                <form action = "" method="post">
+                    <input type="submit" value="All" class="filter-button" name="filter_category"></input>
+                </form>
+                <form action = "" method="post">
+                    <input type="submit" value="Food" class="filter-button" name="filter_category"></input>
+                </form>
+                <form action = "" method="post">
+                    <input type="submit" value="Non-Food" class="filter-button" name="filter_category"></input>
+                </form>
             </div>
             <!-- Filter Buttons Container End -->
             <!-- Feed Flex Row Start -->
