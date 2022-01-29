@@ -8,6 +8,8 @@ if (!$db_handle)
 
 $query = "SELECT * FROM post";
 $result = mysqli_query($db_handle, $query);
+$number_of_rows = mysqli_num_rows($result);
+$number_of_flex_rows = intdiv($number_of_rows, 5) + 1;
 
 ?>
 
@@ -44,7 +46,18 @@ $result = mysqli_query($db_handle, $query);
             </div>
             <!-- Filter Buttons Container End -->
             <!-- Feed Flex Row Start -->
+            <?php
+                $current_flex_row_number = 0;
+                $current_column_number = 0;
+                for($current_flex_row_number; $current_flex_row_number < $number_of_flex_rows; $current_flex_row_number++)
+                {
+            ?>
             <div class="feed-item-row-container">
+                <?php
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+
+                ?>
                 <!-- Feed Item Start -->
                 <div class="feed-item-container">
                     <div class="feed-item-image-container">
@@ -86,8 +99,20 @@ $result = mysqli_query($db_handle, $query);
                     <!-- Below Section End -->
                 </div>
                 <!-- Feed Item End -->
+                <?php
+                        $current_column_number++;
+                        if($current_column_number == 5)
+                        {
+                            break;
+                        }
+                    }
+                ?>
             </div>
             <!-- Feed Flex Row End -->
+            <?php
+                $current_column_number = 0;
+            } 
+            ?>
         </div>
         <!-- Page Wrapper End -->
     </body>
