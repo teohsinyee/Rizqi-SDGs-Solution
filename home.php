@@ -1,3 +1,16 @@
+<?php 
+session_start();
+$db_handle = mysqli_connect("localhost", "root", "", "rizqi");
+if (!$db_handle)
+{
+    die("Unable to connect to MySQL database, error: " . mysqli_connect_error());
+}
+
+$query = "SELECT * FROM post";
+$result = mysqli_query($db_handle, $query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,16 +21,16 @@
         <title>Rizqi | Feed</title>
     </head>
     <body>
+        <!-- Header Start -->
+        <div class="feed-header-container">
+            <a href="" class="feed-header-item feed-header-navigation-link">Home</a>
+            <a href="createpost.php" class="feed-header-item feed-header-navigation-link">Post</a>
+            <a href="profileinfo.php" class="feed-header-item feed-header-navigation-link">My Profile</a>
+            <button class="feed-header-item feed-header-button">Logout</button>
+        </div>
+        <!-- Header End -->
         <!-- Page Wrapper Start -->
-        <div class="fill-viewport feed-page-wrapper">
-            <!-- Header Start -->
-            <div class="feed-header-container">
-                <a href="" class="feed-header-item feed-header-navigation-link">Home</a>
-                <a href="createpost.php" class="feed-header-item feed-header-navigation-link">Post</a>
-                <a href="profileinfo.php" class="feed-header-item feed-header-navigation-link">My Profile</a>
-                <button class="feed-header-item feed-header-button">Logout</button>
-            </div>
-            <!-- Header End -->
+        <div class="feed-page-wrapper">
             <!-- Page Title Start -->
             <div class="feed-title-container">
                 <span class="feed-title">Items Feed</span>
@@ -42,26 +55,26 @@
                         <div class="feed-item-name">
                             Item Name
                         </div>
-                        <div class="feed-item-description">
-                            Item Description
-                        </div>
                         <div class="feed-item-quantity-and-category-container">
                             <span class="feed-item-quantity">
-                                Item Quantity
+                                999 Left
                             </span>
                             <span class="feed-item-category">
-                                Item Category
+                                Non-Food
                             </span>
                         </div>
                         <div class="feed-item-location">
                             Location
+                        </div>
+                        <div class="feed-item-description">
+                            Item Description
                         </div>
                         <div class="feed-item-interaction-buttons-container">
                             <button class="feed-item-contact-button feed-item-interaction-button">Contact Me</button>
                             <button class="feed-item-report-button feed-item-interaction-button">Report</button>
                         </div>
                         <div class="feed-item-user-profile-picture-container">
-                            Profile Picture
+                            <img class="feed-item-user-profile-picture">
                         </div>
                         <div class="feed-item-username">
                             Username

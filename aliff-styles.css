@@ -12,17 +12,21 @@ html
 .fill-viewport
 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 
 .feed-page-wrapper
 {
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 .feed-header-container
 {
     display: flex;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: sticky;
+    top: 0;
     justify-content: flex-end;
     align-items: center;
     background-color: hsla(0, 0%, 0%, 0.85);
@@ -75,6 +79,7 @@ html
 {
     display: flex;
     justify-content: center;
+    margin-bottom: 1vh;
 }
 
 .filter-button
@@ -100,6 +105,7 @@ html
 {
     display: flex;
     justify-content: space-evenly;
+    padding: 1vh 0 1vh 0;
 }
 
 .feed-item-container
@@ -120,7 +126,8 @@ html
 
 .feed-item-name
 {
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .feed-item-quantity-and-category-container
@@ -138,6 +145,7 @@ html
 .feed-item-interaction-button
 {
     font: inherit;
+    font-size: 1rem;
 }
 
 .feed-item-image-container
@@ -156,9 +164,36 @@ html
 .feed-item-user-profile-picture-container
 {
     display: flex;
+    justify-content: center;
+    height: 1.4rem;
 }
 
 .feed-item-user-profile-picture
 {
-    
+    background-color: lightcoral;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.feed-item-description
+{
+    text-align: justify;
+    font-size: 0.8rem;
+}
+
+.feed-item-location
+{
+    text-align: justify;
+}
+
+.feed-item-username
+{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.feed-item-user-email
+{
+    text-align: center;
+    font-size: 0.8rem;
 }
