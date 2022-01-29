@@ -5,11 +5,12 @@ if (!$db_handle)
 {
     die("Unable to connect to MySQL database, error: " . mysqli_connect_error());
 }
-
-$query = "SELECT * FROM post";
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$column_per_rows = 4;
+$query = "SELECT * FROM post ORDER BY `POST_DATETIME` DESC";
 $result = mysqli_query($db_handle, $query);
 $number_of_rows = mysqli_num_rows($result);
-$number_of_flex_rows = intdiv($number_of_rows, 5) + 1;
+$number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
 
 ?>
 
@@ -56,44 +57,76 @@ $number_of_flex_rows = intdiv($number_of_rows, 5) + 1;
                 <?php
                     while($row = mysqli_fetch_assoc($result))
                     {
-
                 ?>
                 <!-- Feed Item Start -->
                 <div class="feed-item-container">
                     <div class="feed-item-image-container">
-                        image
+                        <?php echo ('<img src="data:image/png;base64,'.base64_encode($row['POST_PICTURE']).'" class="feed-item-picture"/>'); ?>
                     </div>
                     <!-- Below Section Start -->
                     <div class="feed-item-below-section-container">
                         <div class="feed-item-name">
-                            Item Name
+                            <?php
+                                echo $row["POST_ITEM_NAME"];
+                            ?>
                         </div>
                         <div class="feed-item-quantity-and-category-container">
                             <span class="feed-item-quantity">
-                                999 Left
+                                <?php
+                                    echo $row['POST_QUANTITY'];
+                                ?> Left
                             </span>
                             <span class="feed-item-category">
-                                Non-Food
+                                <?php
+                                    echo $row['POST_CATEGORY'];
+                                ?>
                             </span>
                         </div>
                         <div class="feed-item-location">
-                            Location
+                            <?php
+                                echo $row['POST_LOCATION'];
+                            ?>
                         </div>
                         <div class="feed-item-description">
-                            Item Description
+                            <?php
+                                echo $row['POST_DESCRIPTION'];
+                            ?>
                         </div>
+                        <?php
+                            $current_user_id = $row['USER_ID'];
+                            $user_query = "SELECT `USER_NAME`, `USER_EMAIL`, `USER_PHONE_NUMBER`, `USER_PICTURE` FROM `user` WHERE `USER_ID` = 1;";
+                            $user_result = mysqli_query($db_handle, $user_query);
+                            if (!$user_result)
+                            {
+                                echo("Error performing MySQL query.");
+                            }
+                            $user_result_row = mysqli_fetch_assoc($user_result);
+                        ?>
                         <div class="feed-item-interaction-buttons-container">
-                            <button class="feed-item-contact-button feed-item-interaction-button">Contact Me</button>
+                            <a href="https://wa.me/<?php echo($user_result_row['USER_PHONE_NUMBER']); ?>" target="_blank"><button class="feed-item-contact-button feed-item-interaction-button">Contact Me</button></a>
+                            
                             <button class="feed-item-report-button feed-item-interaction-button">Report</button>
                         </div>
                         <div class="feed-item-user-profile-picture-container">
-                            <img class="feed-item-user-profile-picture">
+                        <?php echo ('<img src="data:image/png;base64,'.base64_encode($user_result_row['USER_PICTURE']).'" class="feed-item-user-profile-picture"/>'); ?>
                         </div>
                         <div class="feed-item-username">
-                            Username
+                        <?php
+                            echo $user_result_row['USER_NAME'];
+                        ?>
                         </div>
                         <div class="feed-item-user-email">
-                            Email
+                        <?php
+                            echo $user_result_row['USER_EMAIL'];
+                        ?>
+                        </div>
+                        <div class="feed-item-time-elapsed">
+                        <?php
+                            $post_date = new DateTime($row["POST_DATETIME"]);
+                            $current_date = new DateTime();
+                            $time_difference = $current_date->diff($post_date);
+                            echo($time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds'));
+                        ?>
                         </div>
                     </div>
                     <!-- Below Section End -->
@@ -101,7 +134,7 @@ $number_of_flex_rows = intdiv($number_of_rows, 5) + 1;
                 <!-- Feed Item End -->
                 <?php
                         $current_column_number++;
-                        if($current_column_number == 5)
+                        if($current_column_number == $column_per_rows)
                         {
                             break;
                         }

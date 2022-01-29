@@ -110,7 +110,7 @@ html
 
 .feed-item-container
 {
-    width: 18%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -146,6 +146,7 @@ html
 {
     font: inherit;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .feed-item-image-container
@@ -154,6 +155,20 @@ html
     width: 100%;
     aspect-ratio: 1/1;
     background-color: darkgoldenrod;
+    border-bottom: solid black 1px;
+}
+
+.feed-item-picture
+{
+    border-radius: 6% 6% 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.feed-item-user-profile-picture
+{
+    height: 100%;
+    width: auto;
 }
 
 .feed-item-below-section-container
