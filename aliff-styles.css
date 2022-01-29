@@ -118,6 +118,11 @@ html
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+.feed-item-name
+{
+    font-size: 1.5rem;
+}
+
 .feed-item-quantity-and-category-container
 {
     display: flex;
@@ -130,10 +135,30 @@ html
     justify-content: space-evenly;
 }
 
+.feed-item-interaction-button
+{
+    font: inherit;
+}
+
 .feed-item-image-container
 {
     border-radius: 6% 6% 0 0;
     width: 100%;
     aspect-ratio: 1/1;
     background-color: darkgoldenrod;
+}
+
+.feed-item-below-section-container
+{
+    padding: 1vh 0.5vw 1vh 0.5vw;
+}
+
+.feed-item-user-profile-picture-container
+{
+    display: flex;
+}
+
+.feed-item-user-profile-picture
+{
+    
 }
