@@ -26,7 +26,7 @@ if(!$_SESSION['logged_in']) { //check if user login or not
 					<h4 class="logo">Rizqi</h4>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="homepage.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button">Logout</a></li>
