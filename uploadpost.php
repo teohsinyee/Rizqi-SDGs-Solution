@@ -25,7 +25,6 @@ if (isset($_POST['insert'])) {
             $itemlocation = $_REQUEST['itemlocation'];
             $itemcategory = $_REQUEST['itemcategory'];
 
-
         $query = 
         "INSERT INTO `post` (`POST_ID`, `USER_ID`, `POST_ITEM_NAME`, `POST_DESCRIPTION`, `POST_PICTURE`, `POST_QUANTITY`, 
         `POST_LOCATION`, `POST_CATEGORY`, `POST_DATETIME`) 
@@ -49,7 +48,7 @@ if (isset($_POST['insert'])) {
 
 echo ("<script LANGUAGE='JavaScript'>
     window.alert('Post successfully created!');
-    window.location.href='index.html';
+    window.location.href='homepage.php';
     </script>");
 
 ?>
