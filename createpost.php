@@ -46,6 +46,11 @@ $errors = array();
 
 <form action="uploadpost.php" method="post" enctype="multipart/form-data">
 
+<!--
+	1. Bagitau user limit utk setiap fields
+	2. picture - format apa yg blh terima 
+	3. item name - berapa characters
+-->
 <label for="iname">Item name</label>
 <input type="text" id="iname" name="itemname" placeholder="Item name" maxlength="43" required>
 <br>
