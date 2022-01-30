@@ -40,12 +40,24 @@ if (isset($_POST['login_user'])) {
         //if pw is correct
         if (mysqli_num_rows($results) == 1) { //if there is something in the result
           $data=mysqli_fetch_assoc($results); //array
+          $_SESSION['userID'] = $data['USER_ID'];
           $_SESSION['username'] = $data['USER_NAME'];
+          $_SESSION['USER_SUSPENSION_STATUS'] = $data['USER_SUSPENSION_STATUS'];
           $_SESSION['success'] = "You are now logged in";
           $_SESSION['logged_in'] = time();
-          //echo  "Welcome ". $_SESSION['username'];
-         // header('location: index.html');
-         header('location: protected.php');
+          
+          //check suspension status
+          if($_SESSION['USER_SUSPENSION_STATUS'] == 'NOT SUSPENDED'){
+                #header('location: index.html');
+                header('location: homeprotected.php');
+          }
+          else{
+            echo ("<script LANGUAGE='JavaScript'>
+            window.alert('Your account is suspended! Contact the admin for more details.');
+            </script>");
+          }
+
+         
         }else { //if pw is wrong
             array_push($errors, "Wrong username/password combination");
         }

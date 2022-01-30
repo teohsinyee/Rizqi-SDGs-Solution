@@ -1,5 +1,12 @@
-<?php session_start();?>
+<?php
 
+session_start();
+
+if(!$_SESSION['logged_in']) { //check if user login or not
+  header("location:login_form.php"); 
+  die(); 
+}
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>

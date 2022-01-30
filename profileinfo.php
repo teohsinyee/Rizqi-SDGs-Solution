@@ -1,9 +1,16 @@
 <?php 
+
 include('connection.php'); 
+
 session_start();
 
-$_SESSION['userid'] = 1;
-$id = $_SESSION['userid'];
+$id = $_SESSION['userID'];
+
+//check if user login
+if(!$_SESSION['logged_in']) {
+  header("location:login_form.php"); 
+  die(); 
+}
 
 ?>
 
@@ -24,7 +31,7 @@ $id = $_SESSION['userid'];
 
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="homepage.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button">Logout</a></li>
@@ -58,13 +65,22 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
 <?php  
   $query = "SELECT * FROM `POST` WHERE `USER_ID`='$id'";  
   $results = mysqli_query($conn, $query); 
+  if (mysqli_num_rows($results) == 0) { //if no listing
+    echo '<h3>'."No listing yet...".'</h3>';
+    echo '<h3>'." Click ". '<a href="createpost.php">'."here".'</a>'." to create post!".'</h3>';
+  }
   while($data = mysqli_fetch_array($results))
-{
+{ 
+  
   if($data['POST_QUANTITY']>0){ //Only show quantity >0
 ?>
 
+
 <div class="col-6 col-12-narrower">
 <section class="box special">
+
+<!--Save post ID-->
+<?php $postid = $data['POST_ID']?>
 
  <span class="image featured"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($data['POST_PICTURE'] ).'" height="200" width="200"/>';?></span>   
     <h3><?php echo $data['POST_ITEM_NAME']; ?></h3>
@@ -86,7 +102,7 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
       </li>
 
       <li>
-        <a href="delete.php?id=<?php echo $data['POST_ID']; ?>" class="button" onclick="alert('Listing is sucessfully deleted!')">Delete</a>
+        <a href="delete.php?id=<?php echo $data['POST_ID']; ?>" class="button" onclick="javascript:confirmationDelete($(this));return false;">Delete</a>
       </li>
 
 			</ul>
@@ -95,17 +111,20 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
 </div>
 
     <?php
-    $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$id'"); // select query
+    $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$postid'"); // select query
     $data = mysqli_fetch_array($qry); 
     
     if(isset($_POST['update'])) // when click on Update button
     {
     $quantity = $_POST['quantity'];
 
-    $query = "UPDATE `post` SET `POST_QUANTITY` = '$quantity' WHERE `post`.`POST_ID` = '$id'";  
+    $query = "UPDATE `post` SET `POST_QUANTITY` = '$quantity' WHERE `post`.`POST_ID` = '$postid'";  
   if ($conn->query($query) === TRUE) {
-  // echo "Record updated successfully";
-   //header("location:profileinfo.php");
+
+   echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Record updated successfully!');
+    window.location.href='profileinfo.php';
+    </script>");
  } else {
    echo "Error updating record: " . $conn->error;
  }
@@ -123,6 +142,13 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
 </section>
 
 <!-- Scripts -->
+    <script>
+      function confirmationDelete(anchor){
+        var conf = confirm('Are you sure want to delete this record?');
+          if(conf)
+              window.location=anchor.attr("href");
+          }
+      </script>
       <script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -130,6 +156,7 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+     
 
 	</body>
 </html>

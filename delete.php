@@ -2,9 +2,9 @@
 
 include('connection.php');  
 
-$id = $_GET['id']; 
+$postid = $_GET['id']; 
 
-$query = "DELETE FROM `post` WHERE `post`.`POST_ID` = '$id'";
+$query = "DELETE FROM `post` WHERE `post`.`POST_ID` = '$postid'";
 
   if ($conn->query($query) === TRUE) {
    echo "Record DELETED successfully";
