@@ -1,6 +1,12 @@
 <?php 
+
 include('connection.php'); 
+
 session_start();
+if(!$_SESSION['logged_in']) { //check if user login or not
+	header("location:login_form.php"); 
+	die(); 
+  }
 $errors = array(); 
 ?>
 
@@ -20,7 +26,7 @@ $errors = array();
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="homepage.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button">Logout</a></li>
@@ -41,11 +47,11 @@ $errors = array();
 <form action="uploadpost.php" method="post" enctype="multipart/form-data">
 
 <label for="iname">Item name</label>
-<input type="text" id="iname" name="itemname" placeholder="Item name" required>
+<input type="text" id="iname" name="itemname" placeholder="Item name" maxlength="43" required>
 <br>
 
 <label for="idesc">Item description</label>
-<textarea id="idesc" placeholder="Description"  name="itemdescription" rows="4" cols="50" required></textarea>
+<textarea id="idesc" placeholder="Description"  name="itemdescription" rows="2" cols="50" maxlength="80"required></textarea>
 <br>
 
 <label for="ipic">Item picture</label>
