@@ -96,6 +96,12 @@
     background-color: hsla(0, 0%, 0%, 0.85);
 }
 
+.filter-button.active-button
+{
+    color: whitesmoke;
+    background-color: hsla(0, 0%, 0%, 0.85);
+}
+
 .feed-item-row-container
 {
     display: flex;

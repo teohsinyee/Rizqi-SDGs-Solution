@@ -8,6 +8,7 @@ if (!$db_handle)
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $column_per_rows = 4;
 $query = "SELECT * FROM post ORDER BY `POST_DATETIME` DESC";
+$active_button = "all";
 if (isset($_POST['filter_category']))
 {
     if($_POST['filter_category'] == "All")
@@ -17,10 +18,12 @@ if (isset($_POST['filter_category']))
     else if($_POST['filter_category'] == "Food")
     {
         $query = "SELECT * FROM `post` WHERE `POST_CATEGORY` = 'Food' ORDER BY `POST_DATETIME` DESC ";
+        $active_button = "food";
     }
     else if($_POST['filter_category'] == "Non-Food")
     {
         $query = "SELECT * FROM `post` WHERE `POST_CATEGORY` = 'Non-Food' ORDER BY `POST_DATETIME` DESC ";
+        $active_button = "nonfood";
     }
 }
 unset($_POST['filter_category']);
@@ -59,16 +62,44 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
             <!-- Filter Buttons Container Start -->
             <div class="filter-buttons-container">
                 <form action = "" method="post">
-                    <input type="submit" value="All" class="filter-button" name="filter_category"></input>
+                    <input type="submit" value="All" class="filter-button" id="all-button" name="filter_category"></input>
                 </form>
                 <form action = "" method="post">
-                    <input type="submit" value="Food" class="filter-button" name="filter_category"></input>
+                    <input type="submit" value="Food" class="filter-button" id="food-button" name="filter_category"></input>
                 </form>
                 <form action = "" method="post">
-                    <input type="submit" value="Non-Food" class="filter-button" name="filter_category"></input>
+                    <input type="submit" value="Non-Food" class="filter-button" id="nonfood-button" name="filter_category"></input>
                 </form>
             </div>
             <!-- Filter Buttons Container End -->
+            <!-- Active Filter Buttons Script Start-->
+            <?php
+                if($active_button == "all")
+                {
+                    echo("
+                        <script>
+                            document.getElementById('all-button').classList.add('active-button');
+                        </script>
+                    ");
+                }
+                else if($active_button == "food")
+                {
+                    echo("
+                        <script>
+                            document.getElementById('food-button').classList.add('active-button');
+                        </script>
+                    ");
+                }
+                if($active_button == "nonfood")
+                {
+                    echo("
+                        <script>
+                            document.getElementById('nonfood-button').classList.add('active-button');
+                        </script>
+                    ");
+                }
+            ?>
+            <!-- Active Filter Buttons Script End -->
             <!-- Feed Flex Row Start -->
             <?php
                 $current_flex_row_number = 0;
