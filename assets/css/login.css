@@ -15,14 +15,14 @@ h1{
 }
 
 
-form, .content {
+/* form, .content {
 	width: 30%;
 	margin: 0px auto;
 	padding: 20px;
   margin-top: 15%;
 	background: white;
 	border-radius: 10px;
-}
+} */
 
 .input-group {
 	margin: 10px 0px 10px 0px;
@@ -44,7 +44,7 @@ form, .content {
 	border: 1px solid gray;
 }
 
-.btn {
+/* .btn {
 	padding: 10px;
 	font-size: 15px;
 	color: rgb(71, 71, 71);
@@ -54,9 +54,9 @@ form, .content {
     width: 100%;
     margin-top: 15px;
     font-family: 'Open Sans', sans-serif;
-}
+} */
 
-.error {
+/* .error {
 	width: 92%;
 	margin: 0px auto;
 	padding: 10px;
@@ -72,6 +72,6 @@ form, .content {
 	background: #7FC8A9;
 	border: 1px solid black;
 	margin-bottom: 20px;
-}
+} */
   
   
