@@ -31,7 +31,7 @@ if(!$_SESSION['logged_in']) {
 
 					<nav id="nav">
 						<ul>
-							<li><a href="homepage.php">Home</a></li>
+							<li><a href="home.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button">Logout</a></li>
