@@ -27,9 +27,9 @@ if(in_array($fileType, $allowTypes)){
 
         $query = 
         "INSERT INTO `post` (`POST_ID`, `USER_ID`, `POST_ITEM_NAME`, `POST_DESCRIPTION`, `POST_PICTURE`, `POST_QUANTITY`, 
-        `POST_LOCATION`, `POST_CATEGORY`, `POST_DATE`, `POST_TIME`) 
+        `POST_LOCATION`, `POST_CATEGORY`, `POST_DATETIME`) 
         VALUES (NULL, '1', '$itemname', '$itemdescription','$imgContent' , '$itemquantity', 
-        '$itemlocation', '$itemcategory', '$date', '$time')";
+        '$itemlocation', '$itemcategory', current_timestamp())";
 
         if($conn->query($query) === TRUE){ 
             $status = 'success'; 

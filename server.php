@@ -24,10 +24,10 @@ if (isset($_POST['login_user'])) {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     if (empty($email)) {
-        array_push($errors, "Email is required"); //mandatory field
+        array_push($errors, "Enter your user ID in the format domain\user or user@domain"); //mandatory field
     }
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        array_push($errors, "Enter your password");
     }
 
     if (count($errors) == 0) {

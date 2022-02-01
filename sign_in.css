@@ -1,7 +1,7 @@
 html, body{
     height:100%;
     width:100%;
-    background-color:#ffffff;
+    background-color: white;
     color:#000000;
     font-weight:normal;
     font-family:"Segoe UI" , "Segoe" , "SegoeUI-Regular-final", Tahoma, Helvetica, Arial, sans-serif;
@@ -187,12 +187,7 @@ input.text:focus{
 
 .error {
 	width: 92%;
-	margin: 0px auto;
-	padding: 10px;
-	color: white;
-	background: #B61919;
-	border: 1px solid black;
-	border-radius: 5px;
+	color:red;
 	text-align: left;
 }
 

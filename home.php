@@ -49,7 +49,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
             <a href="" class="feed-header-item feed-header-navigation-link">Home</a>
             <a href="createpost.php" class="feed-header-item feed-header-navigation-link">Post</a>
             <a href="profileinfo.php" class="feed-header-item feed-header-navigation-link">My Profile</a>
-            <button class="feed-header-item feed-header-button">Logout</button>
+            <button class="feed-header-item feed-header-button"><a href="logout.php">Logout</a></button>
         </div>
         <!-- Header End -->
         <!-- Page Wrapper Start -->
