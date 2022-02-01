@@ -1,5 +1,12 @@
 <?php 
 session_start();
+
+if(isset($_POST['submit-report']))
+{
+    include('send_report.php');
+    unset($_POST['submit-report']);
+}
+
 $db_handle = mysqli_connect("localhost", "root", "", "rizqi");
 if (!$db_handle)
 {
@@ -41,9 +48,34 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="https://64.media.tumblr.com/34d27d0e919fd4a61946def0c6659b63/tumblr_inline_mgfxr4hoqm1roozkr.gif">
         <link rel="stylesheet" href="aliff-styles.css">
+        <script src="jquery-3.6.0.js"></script>
+        <script src="home.js"></script>
         <title>Rizqi | Feed</title>
     </head>
     <body>
+        <!-- Report Modal Popup Start -->
+        <div class="report-modal-popup-container" id="report-overlay">
+            <div class="report-form-panel">
+                <button id="report-form-panel-close-button">X</button>
+                <div class="report-form-panel-title">Report Form</div>
+                <form method="post" action="" id="report-form">
+                    <input type="hidden" id="reporting_post_id" name="reporting_post_id" value="">
+                    <label for="report-category-select-menu">Category:</label>
+                    <select id="report-category-select-menu" name="report_category">
+                        <option value="Dangerous Or Illegal Items">Dangerous Or Illegal Items</option>
+                        <option value="Violent Or Inappropriate">Violent Or Inappropriate</option>
+                        <option value="Dangerous Substances">Dangerous Substances</option>
+                        <option value="Fraud">Fraud</option>
+                        <option value="Spam">Spam</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="report-description-textarea">Description:</label>
+                    <textarea name="report_description" class="report-description-textarea"></textarea>
+                    <input type="submit" value="Submit Report" name="submit-report">
+                </form>
+            </div>
+        </div>
+        <!-- Report Modal Popup End -->
         <!-- Header Start -->
         <div class="feed-header-container">
             <a href="" class="feed-header-item feed-header-navigation-link">Home</a>
@@ -157,9 +189,12 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             $user_result_row = mysqli_fetch_assoc($user_result);
                         ?>
                         <div class="feed-item-interaction-buttons-container">
-                            <a href="https://wa.me/<?php echo($user_result_row['USER_PHONE_NUMBER']); ?>" target="_blank"><button class="feed-item-contact-button feed-item-interaction-button">Contact Me</button></a>
-                            
-                            <button class="feed-item-report-button feed-item-interaction-button">Report</button>
+                            <a href="https://wa.me/<?php echo($user_result_row['USER_PHONE_NUMBER']); ?>" target="_blank">
+                                <button class="feed-item-contact-button feed-item-interaction-button">
+                                    Contact Me
+                                </button>
+                            </a>
+                            <button class="feed-item-interaction-button feed-item-report-button" post_id="<?php echo($row['POST_ID']) ?>">Report</button>
                         </div>
                         <div class="feed-item-user-profile-picture-container">
                         <?php echo ('<img src="data:image/png;base64,'.base64_encode($user_result_row['USER_PICTURE']).'" class="feed-item-user-profile-picture"/>'); ?>
