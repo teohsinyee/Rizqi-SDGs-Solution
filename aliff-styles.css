@@ -1,0 +1,259 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+.fill-viewport
+{
+    height: 100vh;
+    width: 100%;
+}
+
+.feed-page-wrapper
+{
+    overflow-y: visible;
+}
+
+.feed-header-container
+{
+    display: flex;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: sticky;
+    top: 0;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: hsla(0, 0%, 0%, 0.85);
+    height: 6vh;
+}
+
+.feed-header-item
+{
+    margin: 1vh 1vw 1vh 1vw;
+}
+
+.feed-header-navigation-link
+{
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.feed-header-button
+{
+    color: white;
+    font-size: 1rem;
+    background: none;
+    text-align: start;
+    border: solid 0.06rem whitesmoke;
+    border-radius: 0.3rem;
+    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+    cursor: pointer;
+    font: inherit;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.feed-header-button:hover
+{
+    color: hsla(0, 0%, 0%, 0.85);
+    background-color: hsla(0, 0%, 100%, 0.95);
+}
+
+.feed-title-container
+{
+    text-align: center;
+}
+
+.feed-title
+{
+    font-size: 1.5rem;
+}
+
+.filter-buttons-container
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+
+.filter-button
+{
+    font-size: 1rem;
+    font: inherit;
+    margin: 0 0.5vw 0 0.5vw;
+    background-color: hsla(0, 0%, 0%, 0.05);
+    border: solid hsla(0, 0%, 0%, 0.70) 0.06rem;
+    border-radius: 0.3rem;
+    padding: 1vh 1vw 1vh 1vw;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.filter-button:hover
+{
+    color: whitesmoke;
+    background-color: hsla(0, 0%, 0%, 0.85);
+}
+
+.filter-button.active-button
+{
+    color: whitesmoke;
+    background-color: hsla(0, 0%, 0%, 0.85);
+}
+
+.feed-item-row-container
+{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1vh 0 1vh 0;
+}
+
+.feed-item-container
+{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 6%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    overflow-x: hidden;
+}
+
+.feed-item-container:hover
+{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feed-item-name
+{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.feed-item-quantity-and-category-container
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.feed-item-interaction-buttons-container
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.feed-item-interaction-button
+{
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.feed-item-image-container
+{
+    border-radius: 6% 6% 0 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: darkgoldenrod;
+    border-bottom: solid black 1px;
+}
+
+.feed-item-picture
+{
+    border-radius: 6% 6% 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.feed-item-user-profile-picture
+{
+    height: 100%;
+    width: auto;
+}
+
+.feed-item-below-section-container
+{
+    padding: 1vh 0.5vw 1vh 0.5vw;
+}
+
+.feed-item-user-profile-picture-container
+{
+    display: flex;
+    justify-content: center;
+    height: 1.4rem;
+}
+
+.feed-item-user-profile-picture
+{
+    background-color: lightcoral;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.feed-item-description
+{
+    text-align: justify;
+    font-size: 0.8rem;
+}
+
+.feed-item-location
+{
+    text-align: justify;
+}
+
+.feed-item-username
+{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.feed-item-user-email
+{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+html
+{
+    font-size: 24px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.report-modal-popup-container
+{
+    display: none;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background-color: hsla(0, 0%, 0%, 0.8);
+}
+
+.report-form-panel
+{
+    background-color: whitesmoke;
+    border-radius: 0.3rem;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+#report-form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#report-form-panel-close-button
+{
+    align-self: flex-end;
+}
