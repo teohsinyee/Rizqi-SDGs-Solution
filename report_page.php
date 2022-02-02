@@ -19,6 +19,7 @@ $result = mysqli_query($db_handle, $query);
         <title>Rizqi | Reports</title>
     </head>
     <body>
+        <a href="admin_logout.php"><button>Log Out</button></a>
         <table class="reports-table">
             <tr>
                 <th>Report ID</th>
@@ -33,7 +34,7 @@ $result = mysqli_query($db_handle, $query);
                 <th>Time</th>
                 <th>Report Status</th>
                 <th>Link To Post</th>
-                <th>Toggle Status Action</th>
+                <th>Toggle Report Status Action</th>
                 <th>Toggle User Suspension</th>
                 <th>Delete Post Action</th>
                 <th>Delete Report Action</th>
@@ -61,7 +62,7 @@ $result = mysqli_query($db_handle, $query);
                     <td>" . $datetime ->format('H:i:s') ."</td>
                     <td>" . $row['REPORT_STATUS'] ."</td>
                     <td>" . "<a href='view_post_page.php?post_id=". $post_id ."'>View Post Details</a>" ."</td>
-                    <td><a href='report_page_logic.php?action=toggle_status&report_id=". $row['REPORT_ID'] ."'>Toggle Status</a></td>
+                    <td><a href='report_page_logic.php?action=toggle_status&report_id=". $row['REPORT_ID'] ."'>Toggle Report Status</a></td>
                     <td><a href='report_page_logic.php?target_user_id=". $post_owner_user_id ."&report_id=". $row['REPORT_ID'] ."'>Toggle User Suspension</a></td>
                     <td><a href='report_page_logic.php?target_post_id=". $post_id ."&report_id=". $row['REPORT_ID'] ."'>Delete Post</a></td>
                     <td><a href='report_page_logic.php?action=delete_report&report_id=". $row['REPORT_ID'] ."'>Delete Report</a></td>
