@@ -1,13 +1,11 @@
 <?php
 session_start();
-
 if(!$_SESSION['admin_logged_in']) { //check if admin login or not
     header("location:admin_login_form.php"); 
     die(); 
 }
-
 $db_handle = mysqli_connect("localhost", "root", "", "rizqi");
-$query = "SELECT * FROM reports ORDER BY FIELD(REPORT_STATUS, 'UNSOLVED', 'SOLVED');";
+$query = "SELECT * FROM reports WHERE POST_ID IS NOT NULL && REPORT_STATUS != 'ARCHIVED' ORDER BY FIELD(REPORT_STATUS, 'UNSOLVED', 'SOLVED'), REPORT_DATETIME ASC;";
 $result = mysqli_query($db_handle, $query);
 ?>
 
@@ -21,17 +19,19 @@ $result = mysqli_query($db_handle, $query);
         <title>Rizqi | Reports</title>
     </head>
     <body>
-        <table>
+        <table class="reports-table">
             <tr>
                 <th>Report ID</th>
                 <th>Reporter User ID</th>
                 <th>Post Owner User ID</th>
+                <th>Suspension Status</th>
                 <th>Post ID</th>
                 <th>Admin ID</th>
                 <th>Description</th>
                 <th>Category</th>
                 <th>Date</th>
                 <th>Time</th>
+                <th>Report Status</th>
                 <th>Link To Post</th>
                 <th>Toggle Status Action</th>
                 <th>Toggle User Suspension</th>
@@ -42,23 +42,29 @@ $result = mysqli_query($db_handle, $query);
                 while($row = mysqli_fetch_assoc($result))
                 {
                     $datetime = new DateTime($row['REPORT_DATETIME']);
+                    $post_owner_user_id = $row['POST_OWNER_USER_ID'];
+                    $post_owner_suspension_status_row = mysqli_query($db_handle, "SELECT USER_SUSPENSION_STATUS FROM user WHERE USER_ID = '$post_owner_user_id';");
+                    $post_owner_suspension_status = mysqli_fetch_assoc($post_owner_suspension_status_row)['USER_SUSPENSION_STATUS'];
+                    $post_id = $row['POST_ID'];
                     echo
                     ("
                     <tr>
                     <td>" . $row['REPORT_ID'] ."</td>
                     <td>" . $row['REPORTING_USER_ID'] ."</td>
-                    <td>" . $row['POST_OWNER_USER_ID'] ."</td>
-                    <td>" . $row['POST_ID'] ."</td>
+                    <td>" . $post_owner_user_id ."</td>
+                    <td>" . $post_owner_suspension_status ."</td>
+                    <td>" . $post_id ."</td>
                     <td>" . $row['ADMIN_ID'] ."</td>
                     <td>" . $row['REPORT_DESCRIPTION'] ."</td>
+                    <td>" . $row['REPORT_CATEGORY'] ."</td>
                     <td>" . $datetime ->format('d/m/Y') ."</td>
                     <td>" . $datetime ->format('H:i:s') ."</td>
                     <td>" . $row['REPORT_STATUS'] ."</td>
-                    <td>" . "<a>link placeholder</a>" ."</td>
-                    <td>Toggle Status Action</td>
-                    <td>Toggle User Suspension</td>
-                    <td>Delete Post Action</td>
-                    <td>Delete Report Action</td>
+                    <td>" . "<a href='view_post_page.php?post_id=". $post_id ."'>View Post Details</a>" ."</td>
+                    <td><a href='report_page_logic.php?action=toggle_status&report_id=". $row['REPORT_ID'] ."'>Toggle Status</a></td>
+                    <td><a href='report_page_logic.php?target_user_id=". $post_owner_user_id ."&report_id=". $row['REPORT_ID'] ."'>Toggle User Suspension</a></td>
+                    <td><a href='report_page_logic.php?target_post_id=". $post_id ."&report_id=". $row['REPORT_ID'] ."'>Delete Post</a></td>
+                    <td><a href='report_page_logic.php?action=delete_report&report_id=". $row['REPORT_ID'] ."'>Delete Report</a></td>
                     </tr>
                     ");
                 }
