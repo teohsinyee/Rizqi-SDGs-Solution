@@ -53,6 +53,8 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="https://64.media.tumblr.com/34d27d0e919fd4a61946def0c6659b63/tumblr_inline_mgfxr4hoqm1roozkr.gif">
         <link rel="stylesheet" href="aliff-styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <script src="jquery-3.6.0.js"></script>
         <script src="home.js"></script>
         <title>Rizqi | Feed</title>
@@ -82,22 +84,27 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         </div>
         <!-- Report Modal Popup End -->
         <!-- Header Start -->
-        <div class="feed-header-container">
-            <a href="" class="feed-header-item feed-header-navigation-link">Home</a>
-            <a href="createpost.php" class="feed-header-item feed-header-navigation-link">Post</a>
-            <a href="profileinfo.php" class="feed-header-item feed-header-navigation-link">My Profile</a>
-            <a href="logout.php"><button class="feed-header-item feed-header-button">Logout</button></a>
-        </div>
+        <header id="header">
+        	<h4 class="logo">Rizqi <i class="fa fa-handshake-o"></i></h4>
+					<nav id="nav">
+						<ul>
+							<li><a href="home.php">Home</a></li>
+							<li><a href="createpost.php">Post</a></li>
+							<li><a href="profileinfo.php">My Profile</a></li>
+							<li><a href="logout.php" class="button" style="text-decoration: none;">Logout</a></li>
+						</ul>
+					</nav>
+		</header>
         <!-- Header End -->
-        <!-- Page Wrapper Start -->
         <div class="feed-page-wrapper">
             <!-- Page Title Start -->
-            <div class="feed-title-container">
-                <span class="feed-title">Items Feed</span>
-            </div>
-            <!-- Page Title End -->
-            <!-- Filter Buttons Container Start -->
-            <div class="filter-buttons-container">
+            <section id="banner">
+                <div class="feed-title-container">
+                    <span class="feed-title">Items Feed</span>
+                </div>
+                <!-- Page Title End -->
+                <!-- Filter Buttons Container Start -->
+                <div class="filter-buttons-container">
                 <form action = "" method="post">
                     <input type="submit" value="All" class="filter-button" id="all-button" name="filter_category"></input>
                 </form>
@@ -108,6 +115,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                     <input type="submit" value="Non-Food" class="filter-button" id="nonfood-button" name="filter_category"></input>
                 </form>
             </div>
+            </section>
             <!-- Filter Buttons Container End -->
             <!-- Active Filter Buttons Script Start-->
             <?php
@@ -144,6 +152,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                 for($current_flex_row_number; $current_flex_row_number < $number_of_flex_rows; $current_flex_row_number++)
                 {
             ?>
+            
             <div class="feed-item-row-container">
                 <?php
                     while($row = mysqli_fetch_assoc($result))
@@ -161,25 +170,28 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                                 echo $row["POST_ITEM_NAME"];
                             ?>
                         </div>
-                        <div class="feed-item-quantity-and-category-container">
+                        <br>
+                        <!-- <div class="feed-item-quantity-and-category-container"> -->
+                            <div>
                             <span class="feed-item-quantity">
-                                <?php
+                            <p><i class='fas fa-calculator' style='font-size:20px;color: #191035;'></i> <?php
                                     echo $row['POST_QUANTITY'];
-                                ?> Left
+                                ?> Left</p>
                             </span>
+                            </div>
                             <span class="feed-item-category">
-                                <?php
+                            <i class="fa fa-tag" style="font-size:20px;color: #191035;"></i> <?php
                                     echo $row['POST_CATEGORY'];
                                 ?>
                             </span>
-                        </div>
+                        <!-- </div> -->
                         <div class="feed-item-location">
-                            <?php
+                            <p><i class="fa fa-map-pin" style="font-size:20px; color: #191035;"></i> <?php
                                 echo $row['POST_LOCATION'];
-                            ?>
+                            ?></p>
                         </div>
                         <div class="feed-item-description">
-                            <?php
+                        <i class='fas fa-comment' style='font-size:20px;color: #191035;'></i> <?php
                                 echo $row['POST_DESCRIPTION'];
                             ?>
                         </div>
@@ -193,14 +205,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             }
                             $user_result_row = mysqli_fetch_assoc($user_result);
                         ?>
-                        <div class="feed-item-interaction-buttons-container">
-                            <a href="https://wa.me/<?php echo($user_result_row['USER_PHONE_NUMBER']); ?>" target="_blank">
-                                <button class="feed-item-contact-button feed-item-interaction-button">
-                                    Contact Me
-                                </button>
-                            </a>
-                            <button class="feed-item-interaction-button feed-item-report-button" post_id="<?php echo($row['POST_ID']) ?>">Report</button>
-                        </div>
+                        <br>
                         <div class="feed-item-user-profile-picture-container">
                         <?php echo ('<img src="data:image/png;base64,'.base64_encode($user_result_row['USER_PICTURE']).'" class="feed-item-user-profile-picture"/>'); ?>
                         </div>
@@ -214,6 +219,16 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             echo $user_result_row['USER_EMAIL'];
                         ?>
                         </div>
+                        <br>
+                        <div class="feed-item-interaction-buttons-container">
+                            <a href="https://wa.me/<?php echo($user_result_row['USER_PHONE_NUMBER']); ?>" target="_blank">
+                                <button class="contact">
+                                    Contact Me
+                                </button>
+                            </a>
+                            <button class="report" post_id="<?php echo($row['POST_ID']) ?>">Report</button>
+                        </div>
+                        <br>
                         <div class="feed-item-time-elapsed">
                         <?php
                             $post_date = new DateTime($row["POST_DATETIME"]);
@@ -221,7 +236,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             $time_difference = $current_date->diff($post_date);
                             echo($time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds'));
                         ?>
-                        </div>
+                        </div>                       
                     </div>
                     <!-- Below Section End -->
                 </div>
@@ -241,6 +256,17 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
             } 
             ?>
         </div>
+        <br>
         <!-- Page Wrapper End -->
+        <footer id="footer">
+			<ul class="copyright">
+				<li>&copy; Rizqi. All rights reserved.</li>
+			</ul>
+			<br>
+			<ul class="icons">
+				<li><a href="https://github.com/teohsinyee/Rizqi-SDGs-Solution" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+			</ul><br>
+		</footer>
+        
     </body>
 </html>
