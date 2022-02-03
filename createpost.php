@@ -17,13 +17,15 @@ $errors = array();
 		<link rel="icon" type="image/x-icon" href="https://64.media.tumblr.com/34d27d0e919fd4a61946def0c6659b63/tumblr_inline_mgfxr4hoqm1roozkr.gif">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/mainn.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<header id="header">
+			<header id="header">
+        	<h4 class="logo">Rizqi <i class="fa fa-handshake-o"></i></h4>
 					<nav id="nav">
 						<ul>
 							<li><a href="home.php">Home</a></li>
@@ -54,7 +56,7 @@ $errors = array();
 <textarea id="idesc" placeholder="Description"  name="itemdescription" rows="2" cols="50" maxlength="80"required></textarea>
 <br>
 
-<label for="ipic">Item picture</label>
+<label for="ipic">Item picture <font color="red">'jpg','png','jpeg' only. limited to 16MB.</font></label>
 <input type="file" id="ipic" name="itemimage" required>
 <br><br>
 
@@ -79,11 +81,11 @@ $errors = array();
 
 	<!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>

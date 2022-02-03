@@ -21,46 +21,47 @@ if(!$_SESSION['logged_in']) {
 		<link rel="icon" type="image/x-icon" href="https://64.media.tumblr.com/34d27d0e919fd4a61946def0c6659b63/tumblr_inline_mgfxr4hoqm1roozkr.gif">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/mainn.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 
 <body class="is-preload">
 		<div id="page-wrapper">
 			<!-- Header -->
 				<header id="header">
-
+        <h4 class="logo">Rizqi <i class="fa fa-handshake-o"></i></h4>
 					<nav id="nav">
 						<ul>
 							<li><a href="home.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
-							<li><a href="logout.php" class="button">Logout</a></li>
+							<li><a href="logout.php" class="button" style="text-decoration: none;">Logout</a></li>
 						</ul>
 					</nav>
 				</header>	
 
 <!-- Main -->
-<section id="main" class="container">
-				<section class="box special">
+<section id="main" class="profile">
+				                    <section class="box profile">
 					
-        <!--user profile-->
+          <!--user profile-->
 <?php  
-   $query = "SELECT * FROM `user` WHERE `USER_ID`='$id'";  
-   $results = mysqli_query($conn, $query);
-	if (mysqli_num_rows($results) == 1) { 
-        $data=mysqli_fetch_assoc($results);} 
-echo '<img src="data:image/jpeg;base64,'.base64_encode($data['USER_PICTURE'] ).'" alt="profile pic" style="width:15%; border-radius:100%;"/> ';
+  $query = "SELECT * FROM `user` WHERE `USER_ID`='$id'";  
+  $results = mysqli_query($conn, $query);
+    if (mysqli_num_rows($results) == 1) { 
+    $data=mysqli_fetch_assoc($results);} 
+echo '<img src="data:image/jpeg;base64,'.base64_encode($data['USER_PICTURE'] ).'" alt="profile pic" style="width:20%; border-radius:100%;"/> ';
 echo '<h2>'. $data['USER_NAME'].'</h2>' ;
 echo '<p>'. $data['USER_EMAIL'].'</p>';
 ?>
 </section>
 
 <section id="main" class="container">
-	<header>
-		<h2>My Active Listing</h2>
-  </header>
-		<div class="row">
-		
+      <header>
+        <h2>My Active Listing</h2>
+</header>
+        <div class="row">
+        
 <!--build FOR LOOP here & echo-->
 <?php  
   $query = "SELECT * FROM `POST` WHERE `USER_ID`='$id'";  
@@ -71,7 +72,7 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
   }
   while($data = mysqli_fetch_array($results))
 { 
-  
+      
   if($data['POST_QUANTITY']>0){ //Only show quantity >0
 ?>
 
@@ -82,52 +83,42 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
 <!--Save post ID-->
 <?php $postid = $data['POST_ID']?>
 
- <span class="image featured"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($data['POST_PICTURE'] ).'" height="200" width="200"/>';?></span>   
-    <h3><?php echo $data['POST_ITEM_NAME']; ?></h3>
-    <li> Description: 
-    <?php echo $data['POST_DESCRIPTION']; ?> </li>
-    <li> Location: 
-    <?php echo $data['POST_LOCATION']; ?></li>
-    
-    <!--update quantity here-->
-    <li> Quantity: </li>
-    <form method="POST">
-    <input type="number" id="quan" name="quantity" value="<?php echo $data['POST_QUANTITY'] ?>">
-			<br>
-	
-			<ul class="actions special">
-
-      <li>
-        <input type="submit" name="update" value="Update" class="button"> 
-      </li>
-
-      <li>
-        <a href="delete.php?id=<?php echo $data['POST_ID']; ?>" class="button" onclick="javascript:confirmationDelete($(this));return false;">Delete</a>
-      </li>
-
-			</ul>
-    </form> 
+<span class="image featured"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($data['POST_PICTURE'] ).' " "/>';?></span>   
+  <h3><?php echo $data['POST_ITEM_NAME']; ?></h3>
+  <p> Description: 
+  <?php echo $data['POST_DESCRIPTION']; ?> </p>
+  <p> Location: 
+  <?php echo $data['POST_LOCATION']; ?></p>
+        
+  <!--update quantity here-->
+  <p> Quantity: </p>
+  <form method="POST">
+  <input type="number" id="quan" name="quantity" value="<?php echo $data['POST_QUANTITY'] ?>">
+                      <br>
+          <input type="submit" name="update" value="Update" class="button">
+          <a href="delete.php?id=<?php echo $data['POST_ID']; ?>" class="button" onclick="javascript:confirmationDelete($(this));return false;">Delete</a>
+  </form> 
 </section> 
 </div>
 
-    <?php
-    $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$postid'"); // select query
-    $data = mysqli_fetch_array($qry); 
-    
-    if(isset($_POST['update'])) // when click on Update button
-    {
-    $quantity = $_POST['quantity'];
+  <?php
+  $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$postid'"); // select query
+  $data = mysqli_fetch_array($qry); 
+            
+  if(isset($_POST['update'])) // when click on Update button
+  {
+  $quantity = $_POST['quantity'];
 
-    $query = "UPDATE `post` SET `POST_QUANTITY` = '$quantity' WHERE `post`.`POST_ID` = '$postid'";  
-  if ($conn->query($query) === TRUE) {
+  $query = "UPDATE `post` SET `POST_QUANTITY` = '$quantity' WHERE `post`.`POST_ID` = '$postid'";  
+if ($conn->query($query) === TRUE) {
 
-   echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Record updated successfully!');
-    window.location.href='profileinfo.php';
-    </script>");
- } else {
-   echo "Error updating record: " . $conn->error;
- }
+  echo ("<script LANGUAGE='JavaScript'>
+  window.alert('Record updated successfully!');
+  window.location.href='profileinfo.php';
+  </script>");
+} else {
+  echo "Error updating record: " . $conn->error;
+  }
 }
     ?>
 
