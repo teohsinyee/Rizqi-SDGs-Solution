@@ -31,11 +31,14 @@ if(isset($_POST['submit-report']))
     unset($_POST['submit-report']);
 }
 
+/*
 $db_handle = mysqli_connect("localhost", "root", "", "rizqi");
 if (!$db_handle)
 {
     die("Unable to connect to MySQL database, error: " . mysqli_connect_error());
 }
+*/
+
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $column_per_rows = 4;
 $query = "SELECT * FROM post ORDER BY `POST_DATETIME` DESC";
