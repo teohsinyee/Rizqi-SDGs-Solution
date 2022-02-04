@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 
 //Get Heroku ClearDB connection information

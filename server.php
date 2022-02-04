@@ -4,17 +4,29 @@ session_start();
 $errors = array(); 
 $username = "";
 $email    = "";
+
+//new 2.12 AM -05 FEB
+$servername = "us-cdbr-east-05.cleardb.net";
+$username = "bea65a9aaea3de";
+$password = "3b99e784";
+$db = "Rizqi";
+$conn = mysqli_connect($servername, $username, $password,$db);
+
+
+/* original 2.11AM -05FEB
 $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "Rizqi";
 $conn = mysqli_connect($servername, $username, $password,$db);
+*/
 
-// Check connection
-/*if (!$conn) {
+
+//Check connection
+if (!$conn) {
    die("Connection failed: " . mysqli_connect_error());
 }
-echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");*/
+echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");
 
 //if user submitted login form
 if (isset($_POST['login_user'])) {
