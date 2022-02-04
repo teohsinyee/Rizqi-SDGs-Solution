@@ -13,6 +13,8 @@ $query_builder = TRUE;
 // Connect to DB
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
+include('connection.php'); 
+
 echo 'hi'.$cleardb_url;
 
 if (!$conn) {
@@ -32,8 +34,8 @@ if(isset($_POST['submit-report']))
 }
 
 /*
-$db_handle = mysqli_connect("localhost", "root", "", "rizqi");
-if (!$db_handle)
+$conn = mysqli_connect("localhost", "root", "", "rizqi");
+if (!$conn)
 {
     die("Unable to connect to MySQL database, error: " . mysqli_connect_error());
 }
@@ -61,7 +63,7 @@ if (isset($_POST['filter_category']))
     }
 }
 unset($_POST['filter_category']);
-$result = mysqli_query($db_handle, $query);
+$result = mysqli_query($conn, $query);
 $number_of_rows = mysqli_num_rows($result);
 $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
 
@@ -220,7 +222,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                         <?php
                             $current_user_id = $row['USER_ID'];
                             $user_query = "SELECT `USER_NAME`, `USER_EMAIL`, `USER_PHONE_NUMBER`, `USER_PICTURE` FROM `user` WHERE `USER_ID` = 1;";
-                            $user_result = mysqli_query($db_handle, $user_query);
+                            $user_result = mysqli_query($conn, $user_query);
                             if (!$user_result)
                             {
                                 echo("Error performing MySQL query.");
