@@ -20,7 +20,7 @@ if (!$conn) {
  }
  echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");
 
-/*if(!$_SESSION['logged_in']) { //check if user login or not
+if(!$_SESSION['logged_in']) { //check if user login or not
     header("location:login_form.php"); 
     die(); 
 }
