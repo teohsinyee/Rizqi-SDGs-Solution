@@ -12,8 +12,9 @@ $query_builder = TRUE;
 // Connect to DB
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
+echo 'hi'.$cleardb_url;
 
-if(!$_SESSION['logged_in']) { //check if user login or not
+/*if(!$_SESSION['logged_in']) { //check if user login or not
     header("location:login_form.php"); 
     die(); 
 }
@@ -282,3 +283,4 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         
     </body>
 </html>
+*/
