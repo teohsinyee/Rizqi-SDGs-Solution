@@ -5,15 +5,17 @@ if(!$_SESSION['admin_logged_in']) { //check if admin login or not
     die(); 
 }
 
+/*heroku
 $servername = "us-cdbr-east-05.cleardb.net";
 $username = "bea65a9aaea3de";
 $password = "3b99e784";
 $db = "heroku_f1d328fd0c6533b";
-$db_handle = mysqli_connect($servername, $username, $password,$db);
+$db_handle = mysqli_connect($servername, $username, $password,$db);*/
 
-//$db_handle = mysqli_connect("localhost", "root", "", "rizqi");
+$db_handle = mysqli_connect("localhost", "root", "", "rizqi");
 $query = "SELECT * FROM reports WHERE POST_ID IS NOT NULL && REPORT_STATUS != 'ARCHIVED' ORDER BY FIELD(REPORT_STATUS, 'UNSOLVED', 'SOLVED'), REPORT_DATETIME ASC;";
 $result = mysqli_query($db_handle, $query);
+
 ?>
 
 <!DOCTYPE html>
