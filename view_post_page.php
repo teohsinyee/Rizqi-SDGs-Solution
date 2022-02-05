@@ -17,6 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="report_page.css">
     <title>Rizqi | View Post</title>
 </head>
 <body>
@@ -24,9 +25,9 @@
     <div>User ID: <?php echo($result_row['USER_ID']); ?></div>
     <div>Item Name: <?php echo($result_row['POST_ITEM_NAME']); ?></div>
     <div>Description: <?php echo($result_row['POST_DESCRIPTION']); ?></div>
-    <div>Picture: <?php echo ('<img src="data:image/png;base64,' . base64_encode($result_row['POST_PICTURE']) . '"/>'); ?></div>
     <div>Post Quantity: <?php echo($result_row['POST_QUANTITY']); ?></div>
     <div>Post Location: <?php echo($result_row['POST_LOCATION']); ?></div>
+    <div>Picture: <?php echo ('<img src="data:image/png;base64,' . base64_encode($result_row['POST_PICTURE']) . '" class="feed-item-picture"/>'); ?></div>
     <div><a href="report_page.php">Click here to return to the reports table</a></div>
 </body>
 </html>

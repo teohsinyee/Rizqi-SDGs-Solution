@@ -29,7 +29,7 @@ $result = mysqli_query($db_handle, $query);
     </head>
     <body>
         <h1 style="text-align: center;">Report Page</h1>
-        <a href="admin_logout.php"><button style="float: right;">Log Out</button></a>
+        <a href="admin_logout.php"><button style="float: right; margin-top: -20px">Log Out</button></a>
         <br><br>
         <table class="reports-table">
             <tr>

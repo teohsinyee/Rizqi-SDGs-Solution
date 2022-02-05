@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Chivo&family=Judson&display=swap');
 /* Collapse table border so they don't have multiple layers of borders */
 table
 {
@@ -6,9 +7,53 @@ table
 }
 
 /* Set border to table, table header, table data */
-table,th,td
+table,td,th
 {
  border: solid black 1px;
- font-family: 'Amaranth', sans-serif;
+ font-family: 'Chivo', sans-serif;
+}
+
+h1{
+    font-family: 'Amaranth', sans-serif;
+    font-size: 38px;
+}
+
+.feed-item-picture
+{
+    width: 10%;
+    height: 10%;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #191919e7;
+  color: white;
+  text-align: center;
+}
+ button{
+    background-color: #191035;
+	border-radius: 6px;
+	border: 0;
+	color: #ffffff;
+    cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	height: 3em;
+	line-height: 2.5em;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	width: 6vw;
+ }
+
+ button:hover{
+    background-color: #413562;
 }
 
