@@ -67,7 +67,7 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
   $query = "SELECT * FROM `POST` WHERE `USER_ID`='$id'";  
   $results = mysqli_query($conn, $query); 
   if (mysqli_num_rows($results) == 0) { //if no listing
-    echo '<h3>'."No listing yet...".'</h3>';
+    echo '<h3 style="margin-left: 13.5%;">'."No listing yet...".'</h3>';
     echo '<h3>'." Click ". '<a href="createpost.php">'."here".'</a>'." to create post!".'</h3>';
   }
   while($data = mysqli_fetch_array($results))

@@ -293,4 +293,3 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         
     </body>
 </html>
-*/
