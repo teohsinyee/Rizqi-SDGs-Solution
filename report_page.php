@@ -28,7 +28,9 @@ $result = mysqli_query($db_handle, $query);
         <title>Rizqi | Reports</title>
     </head>
     <body>
-        <a href="admin_logout.php"><button>Log Out</button></a>
+        <h1 style="text-align: center;">Report Page</h1>
+        <a href="admin_logout.php"><button style="float: right;">Log Out</button></a>
+        <br><br>
         <table class="reports-table">
             <tr>
                 <th>Report ID</th>

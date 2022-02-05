@@ -241,7 +241,8 @@ section.box.special li{
 }
 section.box.profile h2{
 	text-align: left;
-	margin-top: 30px;
+	margin-top: 45px;
+	line-height:0;
 }
 section.box.profile p{
 	text-align: left;
@@ -250,7 +251,7 @@ section.box.profile img{
 	width:10%; 
 	border-radius:100%; 
 	float: left;
-	margin-left: 10%;
+	margin-left: 5%;
   	margin-right: 20px;
 	display: block;
 }
@@ -369,7 +370,7 @@ input[type="number"]{
 }
 .box.profile {
 	margin: auto;
-	width: 40em;
+	width: 45em;
 	height: 10em;
 }
 .box.special {

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
 /* Collapse table border so they don't have multiple layers of borders */
 table
 {
@@ -8,4 +9,6 @@ table
 table,th,td
 {
  border: solid black 1px;
+ font-family: 'Amaranth', sans-serif;
 }
+
