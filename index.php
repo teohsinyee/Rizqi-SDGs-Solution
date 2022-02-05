@@ -15,12 +15,12 @@ $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $c
 
 include('connection.php'); 
 
-echo 'hi'.$cleardb_url;
-
+//echo 'hi'.$cleardb_url;
+/*
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
  }
- echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");
+ echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");*/
 
 if(!$_SESSION['logged_in']) { //check if user login or not
     header("location:login_form.php"); 
