@@ -48,7 +48,7 @@ if (isset($_POST['insert'])) {
 
 echo ("<script LANGUAGE='JavaScript'>
     window.alert('Post successfully created!');
-    window.location.href='home.php';
+    window.location.href='index.php';
     </script>");
 
 ?>
