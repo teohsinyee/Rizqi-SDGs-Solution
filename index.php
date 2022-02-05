@@ -111,7 +111,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         	<h4 class="logo">Rizqi <i class="fa fa-handshake-o"></i></h4>
 					<nav id="nav">
 						<ul>
-							<li><a href="home.php">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button" style="text-decoration: none;">Logout</a></li>
