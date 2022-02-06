@@ -88,6 +88,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
             <div class="report-form-panel">
                 <button id="report-form-panel-close-button">X</button>
                 <div class="report-form-panel-title">Report Form</div>
+                <br>
                 <form method="post" action="" id="report-form">
                     <input type="hidden" id="reporting_post_id" name="reporting_post_id" value="">
                     <label for="report-category-select-menu">Category:</label>
@@ -99,9 +100,11 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                         <option value="Spam">Spam</option>
                         <option value="Other">Other</option>
                     </select>
+                    <br><br>
                     <label for="report-description-textarea">Description:</label>
                     <textarea name="report_description" class="report-description-textarea"></textarea>
-                    <input type="submit" value="Submit Report" name="submit-report">
+                    <br>
+                    <input type="submit" value="Submit" name="submit-report">
                 </form>
             </div>
         </div>

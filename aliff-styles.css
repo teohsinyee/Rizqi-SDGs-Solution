@@ -380,7 +380,9 @@ html
     height: 100vh;
     background-color: hsla(0, 0%, 0%, 0.8);
 }
-
+.report-form-panel-title{
+    text-align: center;
+}
 .report-form-panel
 {
     background-color: whitesmoke;
@@ -393,6 +395,7 @@ html
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    padding:10px;
 }
 button.contact, button.report{
     font-family: 'Chivo', sans-serif;
