@@ -21,13 +21,18 @@
     <title>Rizqi | View Post</title>
 </head>
 <body>
-    <div>Post ID: <?php echo($result_row['POST_ID']); ?></div>
-    <div>User ID: <?php echo($result_row['USER_ID']); ?></div>
-    <div>Item Name: <?php echo($result_row['POST_ITEM_NAME']); ?></div>
-    <div>Description: <?php echo($result_row['POST_DESCRIPTION']); ?></div>
-    <div>Post Quantity: <?php echo($result_row['POST_QUANTITY']); ?></div>
-    <div>Post Location: <?php echo($result_row['POST_LOCATION']); ?></div>
-    <div>Picture: <?php echo ('<img src="data:image/png;base64,' . base64_encode($result_row['POST_PICTURE']) . '" class="feed-item-picture"/>'); ?></div>
-    <div><a href="report_page.php">Click here to return to the reports table</a></div>
+    
+    <div class= "content">
+        <a href="report_page.php"><button style="float: left;"><<</button></a>
+        <br>
+        <h1>Post Details </h1>
+        <?php echo ('<img src="data:image/png;base64,' . base64_encode($result_row['POST_PICTURE']) . '" class="feed-item-picture"/>'); ?>
+        <p>Post ID: <?php echo($result_row['POST_ID']); ?></p>
+        <p>User ID: <?php echo($result_row['USER_ID']); ?></p>
+        <p>Item Name: <?php echo($result_row['POST_ITEM_NAME']); ?></p>
+        <p>Description: <?php echo($result_row['POST_DESCRIPTION']); ?></p>
+        <p>Post Quantity: <?php echo($result_row['POST_QUANTITY']); ?></p>
+        <p>Post Location: <?php echo($result_row['POST_LOCATION']); ?></p>  
+    </div>
 </body>
 </html>

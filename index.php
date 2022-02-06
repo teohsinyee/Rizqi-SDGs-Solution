@@ -202,11 +202,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                                 ?> Left</p>
                             </span>
                             </div>
-                            <span class="feed-item-category">
-                            <i class="fa fa-tag" style="font-size:20px;color: #191035;"></i> <?php
-                                    echo $row['POST_CATEGORY'];
-                                ?>
-                            </span>
+                            
                         <!-- </div> -->
                         <div class="feed-item-location">
                             <p><i class="fa fa-map-pin" style="font-size:20px; color: #191035;"></i> <?php
@@ -258,7 +254,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             $current_date = new DateTime();
                             $time_difference = $current_date->diff($post_date);
                             echo($time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds'));
-                        ?>
+                        ?> 
                         </div>                       
                     </div>
                     <!-- Below Section End -->

@@ -187,26 +187,6 @@
     text-decoration: none;
 }
 
-/* .feed-header-button
-{
-    color: white;
-    font-size: 1rem;
-    background: none;
-    text-align: start;
-    border: solid 0.06rem whitesmoke;
-    border-radius: 0.3rem;
-    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
-    cursor: pointer;
-    font: inherit;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.feed-header-button:hover
-{
-    color: hsla(0, 0%, 0%, 0.85);
-    background-color: hsla(0, 0%, 100%, 0.95);
-} */
-
 .feed-title-container
 {
     text-align: center;
@@ -218,9 +198,8 @@
 	text-shadow: 7px 6px #eccaff;
 	font-size: 5em;
 	line-height: 0em;
-	/* margin: 5em 0 0.5em 0; */
-	/* padding: 0; */
     font-family: 'Amaranth', sans-serif;
+   
 }
 
 .filter-buttons-container
@@ -345,7 +324,7 @@
     height: 1.4rem;
 }
 .feed-item-user-profile-picture-container img{
-    width:10%; 
+    width:15%; 
     border-radius:100%; 
 	float: left;
 	display: block;
@@ -381,7 +360,8 @@
 }
 .feed-item-time-elapsed
 {
-    font-size: 13px;
+    font-size: 12px;
+    text-align: center;
 }
 
 html
