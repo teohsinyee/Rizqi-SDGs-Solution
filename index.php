@@ -197,23 +197,18 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             ?>
                         </div>
                         <br>
-                        <!-- <div class="feed-item-quantity-and-category-container"> -->
-                            <div>
-                            <span class="feed-item-quantity">
-                            <p><i class='fas fa-calculator' style='font-size:20px;color: #191035;'></i> <?php
+                        <div class="feed-item-quantity" style="font-size:20px">
+                            <i class='fas fa-calculator' style='font-size:20px;color: #191035;'></i> <?php
                                     echo $row['POST_QUANTITY'];
-                                ?> Left</p>
-                            </span>
-                            </div>
-                            
-                        <!-- </div> -->
-                        <div class="feed-item-location">
-                            <p><i class="fa fa-map-pin" style="font-size:20px; color: #191035;"></i> <?php
-                                echo $row['POST_LOCATION'];
-                            ?></p>
+                                ?> Left
                         </div>
-                        <div class="feed-item-description">
-                        <i class='fas fa-comment' style='font-size:20px;color: #191035;'></i> <?php
+                        <div class="feed-item-location" style="font-size:20px">
+                            <i class="fa fa-map-pin" style="font-size:20px; color: #191035;"></i> <?php
+                                echo $row['POST_LOCATION'];
+                            ?>
+                        </div>
+                        <div class="feed-item-description" style="font-size:20px">
+                            <i class='fas fa-comment' style='font-size:20px;color: #191035;'></i> <?php
                                 echo $row['POST_DESCRIPTION'];
                             ?>
                         </div>
