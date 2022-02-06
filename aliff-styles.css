@@ -428,7 +428,7 @@ button.contact:hover, button.report:hover{
 button.contact:active, button.report:active{
     background-color: #595959;
 }
-}
+
 #report-form
 {
     display: flex;

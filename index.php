@@ -219,7 +219,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                         </div>
                         <?php
                             $current_user_id = $row['USER_ID'];
-                            $user_query = "SELECT `USER_NAME`, `USER_EMAIL`, `USER_PHONE_NUMBER`, `USER_PICTURE` FROM `user` WHERE `USER_ID` = 1;";
+                            $user_query = "SELECT `USER_NAME`, `USER_EMAIL`, `USER_PHONE_NUMBER`, `USER_PICTURE` FROM `user` WHERE USER_ID = $current_user_id;";
                             $user_result = mysqli_query($conn, $user_query);
                             if (!$user_result)
                             {
@@ -256,7 +256,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             $post_date = new DateTime($row["POST_DATETIME"]);
                             $current_date = new DateTime();
                             $time_difference = $current_date->diff($post_date);
-                            echo($time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds'));
+                            echo("Posted " . $time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds ') . "ago.");
                         ?> 
                         </div>                       
                     </div>
