@@ -1,10 +1,18 @@
 <?php
     session_start();
+
     if(!$_SESSION['admin_logged_in']) { //check if admin login or not
         header("location:admin_login_form.php"); 
         die(); 
     }
-    $db_handle = mysqli_connect("localhost", "root", "", "rizqi");
+    //heroku
+    $servername = "us-cdbr-east-05.cleardb.net";
+    $username = "bea65a9aaea3de";
+    $password = "3b99e784";
+    $db = "heroku_f1d328fd0c6533b";
+    $db_handle = mysqli_connect($servername, $username, $password,$db);
+    //$db_handle = mysqli_connect("localhost", "root", "", "rizqi");
+
     if(isset($_GET['post_id']))
     {
         $post_id = $_GET['post_id'];
