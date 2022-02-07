@@ -20,6 +20,12 @@ Main features
 ## Normal User Interface
 ![image](https://user-images.githubusercontent.com/56106630/152761510-7e68a193-6076-4632-b29e-7a7d892a35c0.png)
 
+### Giver can update the quantity of item posted.
+![image](https://user-images.githubusercontent.com/56106630/152762384-4da93339-9bcb-46a2-823a-9ab46c7a0b0f.png)
+
+### Giver can create post for the items to be given away.
+![image](https://user-images.githubusercontent.com/56106630/152762467-6321f399-7502-47ab-8b86-33bfb5e2aecd.png)
+
 ## Admin Interface
 ![image](https://user-images.githubusercontent.com/56106630/152761778-0f193597-e6f1-4ac0-ab25-5822f5487873.png)
 
