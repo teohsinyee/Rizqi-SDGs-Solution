@@ -2,7 +2,7 @@
 
 session_start();
 
-//Heroku
+//Get Heroku ClearDB connection information
 $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $cleardb_server = $cleardb_url["host"];
 $cleardb_username = $cleardb_url["user"];
@@ -10,9 +10,8 @@ $cleardb_password = $cleardb_url["pass"];
 $cleardb_db = substr($cleardb_url["path"],1);
 $active_group = 'default';
 $query_builder = TRUE;
-
+// Connect to DB
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
 
 include('connection.php'); 
 
@@ -34,11 +33,13 @@ if(isset($_POST['submit-report']))
     unset($_POST['submit-report']);
 }
 
-
+/*
+$conn = mysqli_connect("localhost", "root", "", "rizqi");
 if (!$conn)
 {
     die("Unable to connect to MySQL database, error: " . mysqli_connect_error());
 }
+*/
 
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $column_per_rows = 4;
@@ -88,7 +89,6 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
             <div class="report-form-panel">
                 <button id="report-form-panel-close-button">X</button>
                 <div class="report-form-panel-title">Report Form</div>
-                <br>
                 <form method="post" action="" id="report-form">
                     <input type="hidden" id="reporting_post_id" name="reporting_post_id" value="">
                     <label for="report-category-select-menu">Category:</label>
@@ -100,11 +100,9 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                         <option value="Spam">Spam</option>
                         <option value="Other">Other</option>
                     </select>
-                    <br><br>
                     <label for="report-description-textarea">Description:</label>
                     <textarea name="report_description" class="report-description-textarea"></textarea>
-                    <br>
-                    <input type="submit" value="Submit" name="submit-report">
+                    <input type="submit" value="Submit Report" name="submit-report">
                 </form>
             </div>
         </div>
@@ -114,7 +112,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
         	<h4 class="logo">Rizqi <i class="fa fa-handshake-o"></i></h4>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="home.php">Home</a></li>
 							<li><a href="createpost.php">Post</a></li>
 							<li><a href="profileinfo.php">My Profile</a></li>
 							<li><a href="logout.php" class="button" style="text-decoration: none;">Logout</a></li>
@@ -197,24 +195,33 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             ?>
                         </div>
                         <br>
-                        <div class="feed-item-quantity" style="font-size:20px">
-                            <i class='fas fa-calculator' style='font-size:20px;color: #191035;'></i> <?php
+                        <!-- <div class="feed-item-quantity-and-category-container"> -->
+                            <div>
+                            <span class="feed-item-quantity">
+                            <p> <i class='fas fa-layer-group' style='font-size:20px;color:#191035'></i><?php
                                     echo $row['POST_QUANTITY'];
-                                ?> Left
-                        </div>
-                        <div class="feed-item-location" style="font-size:20px">
-                            <i class="fa fa-map-pin" style="font-size:20px; color: #191035;"></i> <?php
+                                ?> Left</p>
+                            </span>
+                            </div>
+                            <span class="feed-item-category">
+                            <i class="fa fa-tag" style="font-size:20px;color: #191035;"></i> <?php
+                                    echo $row['POST_CATEGORY'];
+                                ?>
+                            </span>
+                        <!-- </div> -->
+                        <div class="feed-item-location">
+                            <p><i class="fa fa-map-pin" style="font-size:20px; color: #191035;"></i> <?php
                                 echo $row['POST_LOCATION'];
-                            ?>
+                            ?></p>
                         </div>
-                        <div class="feed-item-description" style="font-size:20px">
-                            <i class='fas fa-comment' style='font-size:20px;color: #191035;'></i> <?php
+                        <div class="feed-item-description">
+                        <i class='fas fa-file-alt' style="font-size:20px; color: #191035;"></i><?php
                                 echo $row['POST_DESCRIPTION'];
                             ?>
                         </div>
                         <?php
                             $current_user_id = $row['USER_ID'];
-                            $user_query = "SELECT `USER_NAME`, `USER_EMAIL`, `USER_PHONE_NUMBER`, `USER_PICTURE` FROM `user` WHERE USER_ID = $current_user_id;";
+                            $user_query = "SELECT `USER_NAME`, `USER_EMAIL`, `USER_PHONE_NUMBER`, `USER_PICTURE` FROM `user` WHERE `USER_ID` = 1;";
                             $user_result = mysqli_query($conn, $user_query);
                             if (!$user_result)
                             {
@@ -251,8 +258,8 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             $post_date = new DateTime($row["POST_DATETIME"]);
                             $current_date = new DateTime();
                             $time_difference = $current_date->diff($post_date);
-                            echo("Posted " . $time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds ') . "ago.");
-                        ?> 
+                            echo($time_difference->format('%m Months %d Days %H Hours %i Minutes %s Seconds'));
+                        ?>
                         </div>                       
                     </div>
                     <!-- Below Section End -->
@@ -281,9 +288,10 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
 			</ul>
 			<br>
 			<ul class="icons">
-				<li><a href="https://github.com/teohsinyee/Rizqi-SDGs-Solution" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+				<li><a href="https://github.com/teohsinyee/Rizqi-SDGs-Solution"><span class="label">Github</span></a></li>
 			</ul><br>
 		</footer>
         
     </body>
 </html>
+*/

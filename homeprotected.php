@@ -10,12 +10,10 @@ if(!isset($_SESSION['userID']) || !isset($_SESSION['logged_in'])){
     exit;
 
 } else{
-    /* Test fetching
-    echo 'hi '.$_SESSION['username'];
+    echo 'hi'.$_SESSION['username'];
     echo 'Congratulations! You are logged in!';
     echo 'You will be redirected in  3 seconds. If not, click <a href="index.php">here</a>.';
-    header( "refresh:1;url=index.php" );*/
-    header( "location: index.php" );
+    header( "refresh:1;url=index.php" );
     die();
 }
 

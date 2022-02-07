@@ -5,7 +5,7 @@ $errors = array();
 $username = "";
 $email    = "";
 
-//heroku
+//new 2.12 AM -05 FEB
 $servername = "us-cdbr-east-05.cleardb.net";
 $username = "bea65a9aaea3de";
 $password = "3b99e784";
@@ -13,11 +13,20 @@ $db = "heroku_f1d328fd0c6533b";
 $conn = mysqli_connect($servername, $username, $password,$db);
 
 
-/*Check connection
+/* original 2.11AM -05FEB
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db = "Rizqi";
+$conn = mysqli_connect($servername, $username, $password,$db);
+*/
+
+
+//Check connection
 if (!$conn) {
    die("Connection failed: " . mysqli_connect_error());
 }
-echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");*/
+echo nl2br("\nConnected successfully to " . $db . " database.\n\n\n");
 
 //if user submitted login form
 if (isset($_POST['login_user'])) {
@@ -51,14 +60,15 @@ if (isset($_POST['login_user'])) {
           
           //check suspension status
           if($_SESSION['USER_SUSPENSION_STATUS'] == 'NOT SUSPENDED'){
+                #header('location: index.html');
                 header('location: homeprotected.php');
           }
           else{
             echo ("<script LANGUAGE='JavaScript'>
             window.alert('Your account is suspended! Contact the admin for more details.');
             </script>");
-            session_unset();
           }
+
          
         }else { //if pw is wrong
             array_push($errors, "Wrong username/password combination");
