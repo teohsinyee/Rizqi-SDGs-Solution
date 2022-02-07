@@ -281,7 +281,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
 			</ul>
 			<br>
 			<ul class="icons">
-				<li><a href="https://github.com/teohsinyee/Rizqi-SDGs-Solution" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+				<li><a href="https://github.com/teohsinyee/Rizqi-SDGs-Solution" ><span class="label">Github</span></a></li>
 			</ul><br>
 		</footer>
         
