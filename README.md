@@ -18,6 +18,10 @@ Main features
 12. Update Report's Status
 
 ## Normal User Interface
+Credentials for testing
+aliff@student.usm.my
+7BnA3K*j
+
 <img src = "screenshots/feed.png" width=400 >
 
 ### Giver can update the quantity of item posted.
@@ -27,6 +31,9 @@ Main features
 <img src = "screenshots/createpost.png" width=400 >
 
 ## Admin Interface
+Credentials for testing
+admin1
+abc12345
 <img src = "screenshots/report.jpg" width=400 >
 
 Theme color
