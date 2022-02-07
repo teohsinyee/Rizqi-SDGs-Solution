@@ -198,7 +198,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                         </div>
                         <br>
                         <div class="feed-item-quantity" style="font-size:20px">
-                            <i class='fas fa-calculator' style='font-size:20px;color: #191035;'></i> <?php
+                            <i class='fas fa-layer-group' style='font-size:20px;color:#191035'></i> <?php
                                     echo $row['POST_QUANTITY'];
                                 ?> Left
                         </div>
@@ -208,7 +208,7 @@ $number_of_flex_rows = intdiv($number_of_rows, $column_per_rows) + 1;
                             ?>
                         </div>
                         <div class="feed-item-description" style="font-size:20px">
-                            <i class='fas fa-comment' style='font-size:20px;color: #191035;'></i> <?php
+                            <i class='fas fa-info-circle' style='font-size:20px;color:#191035'></i> <?php
                                 echo $row['POST_DESCRIPTION'];
                             ?>
                         </div>
