@@ -15,7 +15,7 @@ function hide_report_overlay()
 
 function attach_event_listener_to_report_button()
 {
-    $('.feed-item-report-button').click(
+    $('.report').click(
     function()
         {
             $("#report-overlay").css("display", "block");

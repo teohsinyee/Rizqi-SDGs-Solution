@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Chivo&family=Judson&display=swap');
 /* Collapse table border so they don't have multiple layers of borders */
 table
 {
@@ -5,7 +7,77 @@ table
 }
 
 /* Set border to table, table header, table data */
-table,th,td
+table,td,th
 {
  border: solid black 1px;
+ font-family: 'Chivo', sans-serif;
+ text-align: center;
+}
+
+h1{
+    font-family: 'Amaranth', sans-serif;
+    font-size: 38px;
+}
+
+.feed-item-picture
+{
+    width: 45%;
+    height: 50%;
+    aspect-ratio: 1/1;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #191035;
+  color: white;
+  text-align: center;
+}
+ button{
+    background-color: #191035;
+	border-radius: 6px;
+	border: 0;
+	color: #ffffff;
+    cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	height: 3em;
+	line-height: 2.5em;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	width: 6vw;
+ }
+
+ button:hover{
+    background-color: #413562;
+}
+a{
+    text-decoration: none;
+}
+a:hover {
+    background-color: #413562;
+    color: white;
+  }
+.content{
+    border-style: none;
+    background-color: #dee2e6;
+    border-radius: 5%;
+    box-shadow: 5px 10px #adb5bd;
+    text-align: center;
+    height: 700px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+	max-width: 50vw;
+    margin-top:2%;
+}
+.content p{
+    line-height: left;
 }

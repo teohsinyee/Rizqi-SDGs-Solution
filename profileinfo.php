@@ -44,7 +44,7 @@ if(!$_SESSION['logged_in']) {
 <section id="main" class="profile">
 				                    <section class="box profile">
 					
-          <!--user profile-->
+<!--user profile starts-->
 <?php  
   $query = "SELECT * FROM `user` WHERE `USER_ID`='$id'";  
   $results = mysqli_query($conn, $query);
@@ -54,7 +54,10 @@ echo '<img src="data:image/jpeg;base64,'.base64_encode($data['USER_PICTURE'] ).'
 echo '<h2>'. $data['USER_NAME'].'</h2>' ;
 echo '<p>'. $data['USER_EMAIL'].'</p>';
 ?>
+
 </section>
+
+<!--user profile ends-->
 
 <section id="main" class="container">
       <header>
@@ -66,22 +69,23 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
 <?php  
   $query = "SELECT * FROM `POST` WHERE `USER_ID`='$id'";  
   $results = mysqli_query($conn, $query); 
+
   if (mysqli_num_rows($results) == 0) { //if no listing
-    echo '<h3>'."No listing yet...".'</h3>';
+    echo '<h3 style="margin-left: 13.5%;">'."No listing yet...".'</h3>';
     echo '<h3>'." Click ". '<a href="createpost.php">'."here".'</a>'." to create post!".'</h3>';
   }
-  while($data = mysqli_fetch_array($results))
-{ 
+
+//while loop starts
+  while($data = mysqli_fetch_array($results)){ 
       
   if($data['POST_QUANTITY']>0){ //Only show quantity >0
 ?>
-
 
 <div class="col-6 col-12-narrower">
 <section class="box special">
 
 <!--Save post ID-->
-<?php $postid = $data['POST_ID']?>
+<?php $postid = $data['POST_ID'];?>
 
 <span class="image featured"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($data['POST_PICTURE'] ).' " "/>';?></span>   
   <h3><?php echo $data['POST_ITEM_NAME']; ?></h3>
@@ -89,46 +93,63 @@ echo '<p>'. $data['USER_EMAIL'].'</p>';
   <?php echo $data['POST_DESCRIPTION']; ?> </p>
   <p> Location: 
   <?php echo $data['POST_LOCATION']; ?></p>
-        
+  
+
   <!--update quantity here-->
   <p> Quantity: </p>
   <form method="POST">
-  <input type="number" id="quan" name="quantity" value="<?php echo $data['POST_QUANTITY'] ?>">
-                      <br>
-          <input type="submit" name="update" value="Update" class="button">
-          <a href="delete.php?id=<?php echo $data['POST_ID']; ?>" class="button" onclick="javascript:confirmationDelete($(this));return false;">Delete</a>
+
+  <input type="hidden" name="formpostid" value="<?php echo $data['POST_ID'] ?>">
+  <input type="number" id="quan" name="quantity" value="<?php echo $data['POST_QUANTITY'] ?>"> <br>
+  <input type="submit" name="update" value="Update" class="button">
+  <a href="delete.php?id=<?php echo $data['POST_ID']; ?>" class="button" onclick="javascript:confirmationDelete($(this));return false;">Delete</a>
   </form> 
+  <!--DONE update quantity here-->
 </section> 
 </div>
 
-  <?php
-  $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$postid'"); // select query
-  $data = mysqli_fetch_array($qry); 
-            
-  if(isset($_POST['update'])) // when click on Update button
-  {
-  $quantity = $_POST['quantity'];
-
-  $query = "UPDATE `post` SET `POST_QUANTITY` = '$quantity' WHERE `post`.`POST_ID` = '$postid'";  
-if ($conn->query($query) === TRUE) {
-
-  echo ("<script LANGUAGE='JavaScript'>
-  window.alert('Record updated successfully!');
-  window.location.href='profileinfo.php';
-  </script>");
-} else {
-  echo "Error updating record: " . $conn->error;
-  }
-}
-    ?>
-
 <?php
-} //End If
+} //End If show quantity >0
 ?>
 
 <?php
 } //End while
 ?>
+
+<?php
+if(isset($_POST['update'])){ // when click on Update button    
+
+  $postid = $_POST['formpostid']; //fetch from form
+  $quantity = $_POST['quantity']; //fetch from form
+  
+  /* test fetching
+  echo 'Before update SQL ID:' .$postid;echo "<br>"; //Here postid must retrieve correctly 
+  echo 'Before update SQL Quantity:' .$quantity;echo "<br>"; //Here postid must retrieve correctly
+  */
+ 
+  /*redundant SQL
+  $qry = mysqli_query($conn,"SELECT * FROM `POST` where 'POST_ID'='$postid'"); 
+  $data = mysqli_fetch_array($qry); */
+            
+
+  $query = "UPDATE `post` SET `POST_QUANTITY` = '$quantity' WHERE `post`.`POST_ID` = '$postid'";  
+
+    if ($conn->query($query) === TRUE) {
+
+      /* test fetching
+      echo 'After run successfully ';
+      echo "<br>";
+      echo 'id'.$postid.'quan:'.$quantity;*/
+
+     echo ("<script LANGUAGE='JavaScript'>
+            window.alert('Record updated successfully!');
+            window.location.href='profileinfo.php';
+            </script>");
+    } else {
+      echo "Error updating record: " . $conn->error;
+    }
+  } // End if update
+  ?>
 
 </section>
 
