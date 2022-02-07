@@ -31,7 +31,8 @@ aliff@student.usm.my
 <img src = "screenshots/createpost.png" width=400 >
 
 ## Admin Interface
-Credentials for testing
+https://rizqiusm.herokuapp.com/admin_login_form.php
+Credentials for testing:
 admin1
 abc12345
 
