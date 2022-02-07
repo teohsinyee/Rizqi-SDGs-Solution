@@ -40,3 +40,8 @@ abc12345
 
 Theme color
 > Dark purple #191035 , white #FFFFFF, grey #f8f9fa
+
+Developed by:
+
+Front-end : Aqilah Syahirah, Siti Sakinah
+Back-end : Aliff Iskandar, Sin Yee
